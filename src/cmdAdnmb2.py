@@ -94,7 +94,7 @@ if __name__ == '__main__':
             else:
                 show_info_all(palte_item_cache[cur_id].id, details_pager)
                 details_pager = details_pager + 1
-                continue
+            continue
         if ip == "b":
             state = 0
             details_pager = 1
