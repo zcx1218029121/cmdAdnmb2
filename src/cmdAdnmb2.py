@@ -25,6 +25,7 @@ details_item_cache = []
 def request_palte(pager):
     jsons = json.loads(get_plate_info(4, pager))
     index = 0
+    palte_item_cache.clear()
     for item in jsons:
         string = BaseItem(item)
         palte_item_cache.append(string)
@@ -49,6 +50,7 @@ def show_info_all(id, pager):
 
     stinginfo = StringInfo(info)
     OutPutUtil.singleton.log(creartHeader(stinginfo))
+    details_item_cache.clear()
     for reply in stinginfo.replys:
         details_item_cache.append(reply)
         OutPutUtil.singleton.log(creat_item(reply))
