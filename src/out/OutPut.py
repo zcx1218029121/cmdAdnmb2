@@ -5,7 +5,7 @@ from abc import ABCMeta, abstractmethod
 """
 
 
-class OutPut:
+class OutPut(metaclass=ABCMeta):
     @abstractmethod
     def out(self, text):
         pass

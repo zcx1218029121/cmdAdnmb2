@@ -21,4 +21,4 @@ class ConfigReader:
 
     @staticmethod
     def get_config():
-        return Config()
+        pass

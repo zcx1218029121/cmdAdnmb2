@@ -1,17 +1,21 @@
 from abc import ABC
 
-from src.singleton import singleton
 from src.template.Template import Template
 
+import threading
 
-@singleton()
+
 class ListTemplate(Template, ABC):
+
     def generate_footer(self, info):
         return self.generate_divider(info)
 
     def generate_header(self, info):
-        print(info)
+        pou = ""
+        if "pou" in info:
+            pou = "POU \n"
         return self.generate_divider(info) + \
+               pou + \
                self.generate_index(info["index"]) + info["userid"] + ":" + \
                self.generate_divider(info)
 
@@ -22,4 +26,4 @@ class ListTemplate(Template, ABC):
         return info["content"] + "\n"
 
     def generate_index(self, index):
-        return "【"+str(index)+"】"
+        return "【" + str(index) + "】"

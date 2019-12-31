@@ -23,9 +23,5 @@ class Template(metaclass=ABCMeta):
     def generate_divider(self, info):
         pass
 
-    @abstractmethod
-    def generate_index(self, index):
-        pass
-
     def generate_all(self, info):
         return self.generate_header(info) + self.generate_content(info) + self.generate_footer(info)

@@ -14,7 +14,7 @@ def get_plate_info(id, pager):
     :return:
     """
     url = plate_url % (id, pager) + appid
-    text = requests.get(headers=ConfigReader.get_config().header, url=url).text
+    text = requests.get(headers=header, url=url).text
     return text
 
 
@@ -25,7 +25,7 @@ def get_string_info_url(id, pager):
     :return:
     """
     url = sting_info_url % (id, pager) + appid
-    text = requests.get(headers=ConfigReader.get_config().header, url=url).text
+    text = requests.get(headers=header, url=url).text
     return text
 
 
