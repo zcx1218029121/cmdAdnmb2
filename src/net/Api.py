@@ -1,5 +1,5 @@
 import requests
-from config.ConfigReader import *
+from src.config.ConfigReader import *
 
 appid = "&appid=e31c86032f0d607c&__t=1571144068156"
 plate_url = "https://adnmb2.com/Api/showf?id=%s&page=%s"
