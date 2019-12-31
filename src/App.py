@@ -1,13 +1,9 @@
 from src.Stack import Stack
-from src.StringInfo import *
-from src.BaseItem import *
-from src.out import OutPutUtil
-import json
-from src.net.Api import *
 from src.config.ConfigReader import *
 from src.pager.Pager import *
 
 
+@singleton()
 class App:
     # 页面栈
     pager_task = Stack()
@@ -40,9 +36,10 @@ class App:
 
     def start(self):
         self.on_creat()
+        # main loop
         while True:
             ip = input()
-            self.add_pager(Pager(json.loads(get_plate_info(4, 1))))
+            self.add_pager(Pager().template)
             self.show_pager()
 
 

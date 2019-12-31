@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 命令行刷岛工具
 """
@@ -104,7 +105,7 @@ if __name__ == '__main__':
             details_pager = 1
 
         elif ip.startswith(ConfigReader.get_config().prefix_re):
-            OutPutUtil.singleton.log(ip[3:])
+            OutPutUtil.log(ip[3:])
             OutPutUtil.singleton.log(post_data(palte_item_cache[cur_id].id, ip[2:]))
         else:
             try:

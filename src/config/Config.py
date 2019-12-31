@@ -1,3 +1,7 @@
+from src.singleton import singleton
+
+
+@singleton()
 class Config:
     # 默认欢迎语
     welcome = """  
@@ -38,12 +42,3 @@ class Config:
     cookies = {"userhash": "",
                "memberUserspapapa": "",
                "PHPSESSID": ""}
-
-    _instance = None
-
-    def __new__(cls, *args, **kwargs):
-        if Config._instance is None:
-            obj = object.__new__(cls)
-            Config._instance = obj
-
-        return Config._instance

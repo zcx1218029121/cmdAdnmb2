@@ -1,9 +1,9 @@
-from src.pager.View import *
 from abc import ABC
 
+from src.pager.View import View
 
-class Pager(View, ABC):
 
+class Item(View, ABC):
     def init_data(self):
         """
         初始化数据
