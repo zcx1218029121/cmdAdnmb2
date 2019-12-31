@@ -1,5 +1,4 @@
-
-from out.DefaultOP import *
+from src.out.DefaultOP import *
 
 """
 输出 工具
@@ -14,7 +13,7 @@ class OutPutUtil:
         self.out_put.out(text)
 
     def logf(self, text):
-        self.out_put.out(text+"\n")
+        self.out_put.out(text + "\n")
 
 
 singleton = OutPutUtil(DefaultOP())

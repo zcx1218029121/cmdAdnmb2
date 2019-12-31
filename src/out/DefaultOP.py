@@ -1,5 +1,5 @@
 from abc import ABC
-from out.OutPut import *
+from src.out.OutPut import *
 
 """
  默认输出

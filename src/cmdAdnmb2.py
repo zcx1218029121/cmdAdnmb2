@@ -1,12 +1,12 @@
 """
 命令行刷岛工具
 """
-from StringInfo import *
-from BaseItem import *
-from out import OutPutUtil
+from src.StringInfo import *
+from src.BaseItem import *
+from src.out import OutPutUtil
 import json
-from net.Api import *
-from config.ConfigReader import *
+from src.net.Api import *
+from src.config.ConfigReader import *
 
 plate_pager = 1
 

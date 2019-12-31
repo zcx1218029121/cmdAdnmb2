@@ -1,5 +1,5 @@
 import os
-from config.Config import *
+from src.config.Config import *
 
 
 class ConfigReader:
@@ -16,7 +16,7 @@ class ConfigReader:
         pass
 
     @staticmethod
-    def read_config_json(self, json):
+    def read_config_from_json(self, json):
         pass
 
     @staticmethod
