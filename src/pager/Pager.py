@@ -1,5 +1,7 @@
 from src.pager.View import *
 from abc import ABC
+import json
+from src.net.Api import *
 
 
 class Pager(View, ABC):
@@ -9,7 +11,7 @@ class Pager(View, ABC):
         初始化数据
         :return:
         """
-        pass
+        return json.loads(get_plate_info(4, 1))
 
     def on_destroy(self):
         self.data = None

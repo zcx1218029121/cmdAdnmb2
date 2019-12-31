@@ -1,18 +1,26 @@
-from abc import ABC
+from src.template.ListTemplate import *
 
-from src.singleton import singleton
-from src.template.Template import Template
 
 @singleton()
 class ListPagerTemplate(Template, ABC):
     def generate_content(self, info):
-        pass
+        r = ""
+        index = 0
+        lt = ListTemplate()
+        for item in info:
+            item["index"] = index
+            r = r + lt.generate_all(item)
+            index = index + 1
+        return r
 
     def generate_header(self, info):
         return ""
 
     def generate_divider(self, info):
-        pass
+        return ""
 
     def generate_footer(self, info):
+        return ""
+
+    def generate_index(self, index):
         return ""

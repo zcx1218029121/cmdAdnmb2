@@ -1,13 +1,16 @@
-from abc import abstractmethod
+from abc import abstractmethod, ABCMeta
 
 from src.out import OutPutUtil
 
 
-class View:
+class View(metaclass=ABCMeta):
     #  请求的数据
     data = None
     # 模板
     template = None
+
+    def __init__(self, template):
+        self.template = template
 
     @abstractmethod
     def init_data(self):
@@ -23,8 +26,9 @@ class View:
         :return:
         """
         if not self.data:
-            self.init_data()
-        self.print_pager()
+            self.print_pager(self.init_data())
+        else:
+            self.print_pager(self.init_data())
 
     def refresh(self):
         """
@@ -32,7 +36,7 @@ class View:
         :return:
         """
         self.init_data()
-        self.print_pager()
+        self.print_pager(self.init_data())
 
     # 销毁回调
     @abstractmethod
@@ -47,31 +51,28 @@ class View:
         """
         self.template = template
 
-    def print_pager(self):
+    def print_pager(self,data):
         """
         打印页面
         :return:
         """
         if not self.template:
             raise RuntimeError('template is  Unbound')
-
-        self.print_header()
-        self.print_content()
-        self.print_footer()
+        print(self.template.generate_content(data))
 
     def print_header(self):
         """
         打印头
         :return:
         """
-        OutPutUtil.singleton.log(self.template.header)
+        OutPutUtil.singleton.log(self.template.generate_header(self.data))
 
     def print_footer(self):
         """
         打印脚
         :return:
         """
-        OutPutUtil.singleton.log(self.template.footer)
+        OutPutUtil.singleton.log(self.template.generate_footer(self.data))
 
     def print_content(self):
-        OutPutUtil.singleton.log(self.template.content)
+        OutPutUtil.singleton.log(self.template.generate_content(self.data))

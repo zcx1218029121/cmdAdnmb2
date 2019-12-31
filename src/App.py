@@ -1,6 +1,7 @@
 from src.Stack import Stack
 from src.config.ConfigReader import *
 from src.pager.Pager import *
+from src.template.ListPagerTemplate import *
 
 
 @singleton()
@@ -39,7 +40,7 @@ class App:
         # main loop
         while True:
             ip = input()
-            self.add_pager(Pager().template)
+            self.add_pager(Pager(ListPagerTemplate()))
             self.show_pager()
 
 

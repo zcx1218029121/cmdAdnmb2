@@ -10,8 +10,9 @@ class ListTemplate(Template, ABC):
         return self.generate_divider(info)
 
     def generate_header(self, info):
+        print(info)
         return self.generate_divider(info) + \
-               info["userid"] + ":" + \
+               self.generate_index(info["index"]) + info["userid"] + ":" + \
                self.generate_divider(info)
 
     def generate_divider(self, info):
@@ -19,3 +20,6 @@ class ListTemplate(Template, ABC):
 
     def generate_content(self, info):
         return info["content"] + "\n"
+
+    def generate_index(self, index):
+        return "【"+str(index)+"】"

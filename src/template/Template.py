@@ -1,7 +1,8 @@
 from abc import abstractmethod
+from abc import abstractmethod, ABCMeta
 
 
-class Template:
+class Template(metaclass=ABCMeta):
     """
     应用模板
     """
@@ -25,3 +26,6 @@ class Template:
     @abstractmethod
     def generate_index(self, index):
         pass
+
+    def generate_all(self, info):
+        return self.generate_header(info) + self.generate_content(info) + self.generate_footer(info)
