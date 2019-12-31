@@ -1,5 +1,5 @@
-from src.out.OutPut import *
-from src.out.DefaultOP import *
+
+from out.DefaultOP import *
 
 """
 输出 工具

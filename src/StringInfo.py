@@ -1,4 +1,4 @@
-from src.BaseItem import *
+from BaseItem import *
 
 
 class StringInfo(BaseItem):

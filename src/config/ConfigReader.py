@@ -1,5 +1,5 @@
 import os
-from src.config.Config import *
+from config.Config import *
 
 
 class ConfigReader:
