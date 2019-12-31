@@ -17,12 +17,14 @@ class Pager:
         """
         pass
 
-        # 显示回调
-
     def on_show(self):
+        """
+        # 显示回调
+        :return:
+        """
         if self.data:
             self.init_data()
-        self.on_show()
+        self.print_pager()
 
         # 销毁回调
 
