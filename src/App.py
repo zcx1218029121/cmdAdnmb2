@@ -1,4 +1,5 @@
 from src.Stack import Stack
+from src.config.Config import welcome, bye, pg_down, pg_up, back
 from src.pager.InfoPager import InfoPager
 from src.pager.Pager import *
 from src.template.InfoPagerTemplate import InfoPagerTemplate
@@ -33,7 +34,7 @@ class App:
 
     def on_exit(self):
         self.pager_task.clear()
-        OutPutUtil.singleton.log(ConfigReader.get_config().bye)
+        OutPutUtil.singleton.log(bye)
 
     def back(self):
         if self.pager_task.size() >= 1:
