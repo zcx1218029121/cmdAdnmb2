@@ -9,6 +9,8 @@ class InfoPagerTemplate(Template, ABC):
         r = ""
         index = 0
         lt = ListTemplate()
+        if len(info["replys"]) == 1:
+            return "没有数据了"
         for item in info["replys"]:
             item["index"] = index
             if info["userid"] == item["userid"]:

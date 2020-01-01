@@ -1,8 +1,10 @@
+from src import Route
 from src.pager.View import *
 from abc import ABC
 import json
 from src.net.Api import *
 import queue
+from src.config.Config import prefix_re
 
 
 class Pager(View, ABC):
@@ -28,7 +30,6 @@ class Pager(View, ABC):
             # 缓存页数据出队
             self.pager_queue.get()
         self.pager_queue.put(self.data)
-
         self.data = self.get_data()
         # 重新打印当前内
         self.print_pager()
@@ -36,13 +37,13 @@ class Pager(View, ABC):
     def up_pager(self):
         # 缓存队列
         self.pager = self.pager - 1
-        # 如果前一页缓存 不为空
+        # 如果前一页有缓存 不为空
         if not self.pager_queue.empty():
             self.data = self.pager_queue.get()
         else:
             if self.pager < 2:
                 self.pager = 1
-                self.data = self.get_data()
+            self.data = self.get_data()
         self.print_pager()
 
     def get_data(self):
@@ -51,3 +52,11 @@ class Pager(View, ABC):
 
     def show_loading(self):
         self.print_text("加载中...")
+
+    def handler_input(self, ip):
+        if ip.startswith(prefix_re):
+            self.print_text(self.do_reply(ip[len(prefix_re):]))
+        Route.instance.push({"name": "info", "parm": self.data[int(ip)]["id"]})
+
+    def do_reply(self, text):
+        self.print_text(post_data(self.id, text))

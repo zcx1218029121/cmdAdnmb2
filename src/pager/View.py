@@ -8,6 +8,8 @@ class View(metaclass=ABCMeta):
     data = None
     # 模板
     template = None
+    # content
+    content = None
 
     def __init__(self, template):
         self.template = template
@@ -68,8 +70,10 @@ class View(metaclass=ABCMeta):
         """
         if not self.template:
             raise RuntimeError('template is  Unbound')
+        self.print_text(self.template.generate_all(self.data))
 
-        OutPutUtil.singleton.log(self.template.generate_all(self.data))
+        self.print_text(self.template.generate_all(self.data))
+        # self.template.generate_all(self.data)
 
     def print_header(self):
         """
@@ -90,3 +94,7 @@ class View(metaclass=ABCMeta):
 
     def print_text(self, text):
         OutPutUtil.singleton.log(text)
+
+    @abstractmethod
+    def handler_input(self, ip):
+        pass

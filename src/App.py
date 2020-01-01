@@ -1,5 +1,6 @@
+from src import Route
 from src.Stack import Stack
-from src.config.Config import welcome, bye, pg_down, pg_up, back
+from src.config.Config import welcome, bye, pg_down, pg_up, back, pg_re
 from src.pager.InfoPager import InfoPager
 from src.pager.Pager import *
 from src.template.InfoPagerTemplate import InfoPagerTemplate
@@ -9,6 +10,7 @@ from src.template.ListPagerTemplate import *
 class App:
     # 页面栈
     pager_task = Stack()
+    run = True
 
     def on_creat(self):
         """
@@ -16,6 +18,8 @@ class App:
         :return:
         """
         OutPutUtil.singleton.log(welcome)
+        # 绑定路由
+        Route.instance.bind_app(self)
 
     def add_pager(self, pager):
         """
@@ -35,27 +39,34 @@ class App:
     def on_exit(self):
         self.pager_task.clear()
         OutPutUtil.singleton.log(bye)
+        # 结束循环
+        self.run = False
 
     def back(self):
-        if self.pager_task.size() >= 1:
+        if self.pager_task.size() > 1:
             self.pager_task.pop()
+        else:
+            self.on_exit()
 
     def start(self):
         self.on_creat()
         # 默认加载时间线页面
         self.add_pager(Pager(ListPagerTemplate(), string_id=4))
         # main loop
-        while True:
+        while self.run:
             self.show_pager()
             ip = input()
             if ip == pg_down:
                 self.pager_task.peek().next_pager()
             elif ip == pg_up:
-                self.pager_task.peek().up_pager()
+                self.pager_task.peek().up_pagper()
             elif ip == back:
                 self.back()
+            elif ip == pg_re:
+                self.pager_task.peek().refresh()
             else:
-                self.add_pager(InfoPager(InfoPagerTemplate(), string_id=self.pager_task.peek().data[int(ip)]["id"]))
+                # self.add_pager(InfoPager(InfoPagerTemplate(), string_id=self.pager_task.peek().data[int(ip)]["id"]))
+                self.pager_task.peek().handler_input(ip)
 
 
 if __name__ == '__main__':
