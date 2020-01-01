@@ -2,7 +2,6 @@ from src.template.ListTemplate import *
 
 
 class ListPagerTemplate(Template, ABC):
-    _instance_lock = threading.Lock()
 
     def generate_content(self, info):
         r = ""

@@ -2,8 +2,6 @@ from abc import ABC
 
 from src.template.Template import Template
 
-import threading
-
 
 class ListTemplate(Template, ABC):
 
