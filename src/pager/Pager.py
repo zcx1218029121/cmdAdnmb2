@@ -25,6 +25,12 @@ def is_number(s):
 
 
 class Pager(View, ABC):
+    """
+    页面类
+    ①上一页缓存
+    ②上一页 ,下一页
+    ③回复
+    """
     cache_size = 10
     # 默认 请求页数 1
     pager = 1
@@ -35,9 +41,6 @@ class Pager(View, ABC):
         super().__init__(template)
         self.id = string_id
 
-    def on_destroy(self):
-        self.data = None
-
     def next_pager(self):
         self.pager = self.pager + 1
         # 缓存上一页的数据
@@ -46,7 +49,6 @@ class Pager(View, ABC):
             self.pager_queue.get()
         self.pager_queue.put(self.data)
         self.data = self.get_data()
-        # 重新打印当前内
 
     def up_pager(self):
         # 缓存队列
@@ -71,7 +73,7 @@ class Pager(View, ABC):
         """
 
         :param ip: 输入
-        :return: 是否传递输入给 循环的下一页
+        :return: 是否传递输入给 APP
         """
         if ip == pg_down:
             self.next_pager()
@@ -88,6 +90,11 @@ class Pager(View, ABC):
         return False
 
     def do_reply(self, text):
+        """
+        text 输入 页
+        :param text:
+        :return:
+        """
         Route.instance.show_toast(post_data(self.id, text))
 
     def index_type(self, ip):

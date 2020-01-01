@@ -3,8 +3,10 @@ from abc import ABC
 from src.pager.View import View
 
 
-# 弹出提示view 显示一次后立即退出页面栈
 class Toast(View, ABC):
+    """
+    弹出 提示 view 显示一次后立即退出页面栈
+    """
 
     def __init__(self, template, app, text):
         super().__init__(template)

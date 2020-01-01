@@ -1,9 +1,6 @@
-from src import Route
 from src.Stack import Stack
-from src.config.Config import welcome, bye, pg_down, pg_up, back, ip_exit
-from src.pager.InfoPager import InfoPager
+from src.config.Config import welcome, bye, back, ip_exit
 from src.pager.Pager import *
-from src.template.InfoPagerTemplate import InfoPagerTemplate
 from src.template.ListPagerTemplate import *
 
 
