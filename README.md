@@ -1,8 +1,13 @@
 # cmdAdnmb2
 命令行 刷a岛工具
-非常简陋的代码 抓包了安卓绿岛
+
+非常简陋的代码 
+
+抓包了安卓绿岛
 ## 需要安装的库和环境
-python 3.0
+### python 3.0
+
+### requests 库
  ```python
     pip install requests
 ```
@@ -22,15 +27,11 @@ python3 App.py
 win的也可以直接 下载打包好的exe文件 在命令行里面运行 
 
 
-- [ ] 选板块
-- [ ] 自定义配置
-- [ ] 收藏串
 
 
-## 首页
-## 时间线
+### 时间线
 ![avatar](https://s2.ax1x.com/2019/12/30/lMRkUx.png)
-## 详情页
+### 详情页
 ![avatar](https://s2.ax1x.com/2019/12/30/lM2REt.png)
 
 ## 操作 
@@ -45,5 +46,5 @@ win的也可以直接 下载打包好的exe文件 在命令行里面运行
 
 
 ### 辣眼睛警告
-    1. 用Javaer的思维方式写的Python.
+    1. 用Javaer的思维方式写的Python.简单的功能有点过度设计
     2. 代码水平捉急 辣眼睛请见谅. 
