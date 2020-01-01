@@ -42,7 +42,7 @@ class Pager(View, ABC):
         else:
             if self.pager < 2:
                 self.pager = 1
-            self.data = self.get_data()
+                self.data = self.get_data()
         self.print_pager()
 
     def get_data(self):
