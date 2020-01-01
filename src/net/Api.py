@@ -1,3 +1,4 @@
+# coding=utf-8
 import requests
 
 from src.config.Config import header, cookies, send_ok, no_cookies

@@ -1,3 +1,4 @@
+# coding=utf-8
 from abc import abstractmethod, ABCMeta
 
 from src.out import OutPutUtil

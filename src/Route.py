@@ -1,3 +1,4 @@
+# coding=utf-8
 from src.pager.InfoPager import InfoPager
 from src.pager.Pager import Pager
 from src.pager.Toast import Toast

@@ -1,6 +1,5 @@
+# coding=utf-8
 from src.template.ListTemplate import *
-
-
 class ListPagerTemplate(Template, ABC):
 
     def generate_content(self, info):

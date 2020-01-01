@@ -1,3 +1,6 @@
+# coding=utf-8
+import sys
+sys.path.append('/home/zcx/IdeaProjects/cmdAdnmb2')
 from src import Route
 from src.Stack import Stack
 from src.config.Config import welcome, bye, pg_down, pg_up, back

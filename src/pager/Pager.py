@@ -1,3 +1,4 @@
+# coding=utf-8
 from src import Route
 from src.pager.View import *
 from abc import ABC
@@ -5,7 +6,6 @@ import json
 from src.net.Api import *
 import queue
 from src.config.Config import prefix_re, pg_down, pg_up
-
 
 def is_number(s):
     try:

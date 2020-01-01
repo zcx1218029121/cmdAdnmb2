@@ -1,3 +1,4 @@
+# coding=utf-8
 from abc import ABC
 
 from src.template.ListTemplate import ListTemplate

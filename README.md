@@ -1,15 +1,24 @@
 # cmdAdnmb2
 命令行 刷a岛工具
 非常简陋的代码 抓包了安卓绿岛
-需要安装的库
+## 需要安装的库和环境
+python 3.0
  ```python
     pip install requests
 ```
+## 如何使用
+### 添加模块到python环境
+修改src/App.py
 
-之后运行
-```python
-    python cmdAdnmb2.py
+ ```python
+sys.path.append('clone的位置/cmdAdnmb2')
 ```
+### 启动
+cd 到src 文件夹下
+ ```python
+python3 App.py
+```
+
 win的也可以直接 下载打包好的exe文件 在命令行里面运行 
 
 
@@ -26,6 +35,15 @@ win的也可以直接 下载打包好的exe文件 在命令行里面运行
 
 ## 操作 
  ### n 下一页
- ### b 返回首页
+ ### pb 返回上一页
+ ### b 上一页 (默认缓存10页)
  ### 1 2 3 4 5 6 进入对应index的串
- ### 回复 re:回复的内容 （需要填写小饼干）
+ 
+ 
+ ### 回复 re:回复的内容 
+    （需要在src/config/Config 填写cookies 可以把二维码导出 用https://cli.im/deqr扫描文字）
+
+
+### 辣眼睛警告
+    1. 用Javaer的思维方式写的Python.
+    2. 代码水平捉急 辣眼睛请见谅. 
