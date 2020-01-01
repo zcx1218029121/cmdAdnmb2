@@ -6,7 +6,7 @@ import queue
 
 
 class Pager(View, ABC):
-    cache_size = 1
+    cache_size = 10
     # 默认 请求页数 1
     pager = 1
     # 缓存页面 默认为 3
