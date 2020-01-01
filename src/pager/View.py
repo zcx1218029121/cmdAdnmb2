@@ -39,7 +39,6 @@ class View(metaclass=ABCMeta):
         self.print_pager()
 
     # 销毁回调
-    @abstractmethod
     def on_destroy(self):
         # 销毁数据
         self.data = None
@@ -72,9 +71,6 @@ class View(metaclass=ABCMeta):
             raise RuntimeError('template is  Unbound')
         self.print_text(self.template.generate_all(self.data))
 
-        self.print_text(self.template.generate_all(self.data))
-        # self.template.generate_all(self.data)
-
     def print_header(self):
         """
         打印头
@@ -94,7 +90,3 @@ class View(metaclass=ABCMeta):
 
     def print_text(self, text):
         OutPutUtil.singleton.log(text)
-
-    @abstractmethod
-    def handler_input(self, ip):
-        pass

@@ -4,7 +4,24 @@ from abc import ABC
 import json
 from src.net.Api import *
 import queue
-from src.config.Config import prefix_re
+from src.config.Config import prefix_re, pg_down, pg_up
+
+
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        pass
+
+    try:
+        import unicodedata
+        unicodedata.numeric(s)
+        return True
+    except (TypeError, ValueError):
+        pass
+
+    return False
 
 
 class Pager(View, ABC):
@@ -13,8 +30,6 @@ class Pager(View, ABC):
     pager = 1
     # 缓存页面 默认为 3
     pager_queue = queue.Queue(cache_size)
-
-    is_loading = False
 
     def __init__(self, template, string_id=4):
         super().__init__(template)
@@ -32,7 +47,6 @@ class Pager(View, ABC):
         self.pager_queue.put(self.data)
         self.data = self.get_data()
         # 重新打印当前内
-        self.print_pager()
 
     def up_pager(self):
         # 缓存队列
@@ -54,9 +68,28 @@ class Pager(View, ABC):
         self.print_text("加载中...")
 
     def handler_input(self, ip):
+        """
+
+        :param ip: 输入
+        :return: 是否传递输入给 循环的下一页
+        """
+        if ip == pg_down:
+            self.next_pager()
+            return True
+        if ip == pg_up:
+            self.up_pager()
+            return True
         if ip.startswith(prefix_re):
-            self.print_text(self.do_reply(ip[len(prefix_re):]))
-        Route.instance.push({"name": "info", "parm": self.data[int(ip)]["id"]})
+            self.do_reply(ip[len(prefix_re):])
+            return True
+        if is_number(ip):
+            return self.index_type(ip)
+        # 不消耗输入
+        return False
 
     def do_reply(self, text):
-        self.print_text(post_data(self.id, text))
+        Route.instance.show_toast(post_data(self.id, text))
+
+    def index_type(self, ip):
+        Route.instance.push({"name": "info", "parm": self.data[int(ip)]["id"]})
+        return True

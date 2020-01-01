@@ -22,6 +22,7 @@ pg_down = "n"
 pg_up = "b"
 # 默认刷新
 pg_re = "r"
+
 back = "pb"
 
 send_err = "发送失败"
@@ -34,8 +35,8 @@ send_ok = "发送成功"
 
 no_cookies = "没有饼干"
 
-# 要有 饼干才能回复  可以把饼干二维码 复制出来用 https://cli.im/deqr 扫描并填写 哦
+# 要有 饼干才能回复  可以把饼干二维码 复制出来用 https://cli.im/deqr 扫描并填写
 cookies = {"userhash": "",
            "memberUserspapapa": "",
            "PHPSESSID": ""}
-event_bus = {}
+ip_exit = "exit"

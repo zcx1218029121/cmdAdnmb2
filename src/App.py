@@ -1,6 +1,6 @@
 from src import Route
 from src.Stack import Stack
-from src.config.Config import welcome, bye, pg_down, pg_up, back, pg_re
+from src.config.Config import welcome, bye, pg_down, pg_up, back, ip_exit
 from src.pager.InfoPager import InfoPager
 from src.pager.Pager import *
 from src.template.InfoPagerTemplate import InfoPagerTemplate
@@ -44,6 +44,8 @@ class App:
 
     def back(self):
         if self.pager_task.size() > 1:
+            # 回调 销毁方法
+            self.pager_task.peek().on_destroy()
             self.pager_task.pop()
         else:
             self.on_exit()
@@ -56,17 +58,12 @@ class App:
         while self.run:
             self.show_pager()
             ip = input()
-            if ip == pg_down:
-                self.pager_task.peek().next_pager()
-            elif ip == pg_up:
-                self.pager_task.peek().up_pagper()
-            elif ip == back:
+            if self.pager_task.peek().handler_input(ip):
+                continue
+            if ip == back:
                 self.back()
-            elif ip == pg_re:
-                self.pager_task.peek().refresh()
-            else:
-                # self.add_pager(InfoPager(InfoPagerTemplate(), string_id=self.pager_task.peek().data[int(ip)]["id"]))
-                self.pager_task.peek().handler_input(ip)
+            if ip == ip_exit:
+                self.on_exit()
 
 
 if __name__ == '__main__':
