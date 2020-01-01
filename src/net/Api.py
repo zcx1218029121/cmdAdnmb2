@@ -1,5 +1,6 @@
 import requests
-from src.config.ConfigReader import *
+
+from src.config.Config import header, cookies, send_ok, no_cookies
 
 appid = "&appid=e31c86032f0d607c&__t=1571144068156"
 plate_url = "https://adnmb2.com/Api/showf?id=%s&page=%s"
@@ -38,11 +39,11 @@ def post_data(resto, content, title="", name="", email=""):
         "email": email,
         "water": "true"
     }
-    text = requests.post(headers=ConfigReader.get_config().header, url=re_url, data=data,
-                         cookies=ConfigReader.get_config().cookies).text
+    text = requests.post(headers=header, url=re_url, data=data,
+                         cookies=cookies).text
     if "回复成功" in text:
-        return ConfigReader.get_config().send_ok
+        return send_ok
     elif "没有饼干" in text:
-        return ConfigReader.get_config().no_cookies
+        return no_cookies
     elif "冷却" in text:
         return "冷却中"
