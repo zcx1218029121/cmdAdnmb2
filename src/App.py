@@ -1,6 +1,9 @@
 # coding=utf-8
 import sys
+import os
+
 sys.path.append('F:\cmdAdnmb2')
+import json
 from src.pager.CategoryPager import CategoryPager
 from src.template.CategoryPagerTemplate import CategoryPagerTemplate
 from src import Route
@@ -23,6 +26,7 @@ class App:
         :return:
         """
         OutPutUtil.singleton.log(welcome)
+
         # 绑定路由
         Route.instance.bind_app(self)
 
@@ -70,6 +74,21 @@ class App:
             if ip == "exit":
                 self.on_exit()
 
+    def read_config(self):
+        if not os.path.exists("./config.json"):
+            userhash = input("userhash:")
+            memberUserspapapa = input("memberUserspapapa:")
+            PHPSESSID = input("PHPSESSID:")
+            cookie_json = {"userhash": userhash, "memberUserspapapa": memberUserspapapa, "PHPSESSID": PHPSESSID}
+            with open("./config.json", "w") as f:
+                f.write(json.dumps(cookie_json))
+        else:
+            with open("./config.json", 'r') as f:
+                cookies_config = json.loads(f.read())
+                cookies["userhash"] = cookies_config["userhash"]
+                cookies["memberUserspapapa"] = cookies_config["memberUserspapapa"]
+                cookies["PHPSESSID"] = cookies_config["PHPSESSID"]
+
 
 if __name__ == '__main__':
-    App().start()
+    App().read_config()
