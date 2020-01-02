@@ -64,6 +64,7 @@ class Pager(View, ABC):
 
     def get_data(self):
         self.show_loading()
+        self.id = Route.instance.cur_intent["parm"]
         return json.loads(get_plate_info(self.id, self.pager))
 
     def show_loading(self):

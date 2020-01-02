@@ -12,9 +12,7 @@ class InfoPager(Pager):
         self.id = Route.instance.cur_intent["parm"]
         return json.loads(get_string_info_url(self.id, self.pager))
 
-    def index_type(self, ip):
-        Route.instance.show_toast("串引用还在开发中...")
-        return True
+
 
     def do_reply(self, text):
         Route.instance.show_toast(post_data(self.id, text))

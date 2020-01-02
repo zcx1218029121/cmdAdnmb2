@@ -1,7 +1,8 @@
 # coding=utf-8
 import sys
-
 sys.path.append('F:\cmdAdnmb2')
+from src.pager.CategoryPager import CategoryPager
+from src.template.CategoryPagerTemplate import CategoryPagerTemplate
 from src import Route
 from src.Stack import Stack
 from src.config.Config import welcome, bye, pg_down, pg_up, back
@@ -57,7 +58,7 @@ class App:
     def start(self):
         self.on_creat()
         # 默认加载时间线页面
-        self.add_pager(Pager(ListPagerTemplate(), string_id=20))
+        self.add_pager(CategoryPager(CategoryPagerTemplate()))
         # main loop
         while self.run:
             self.show_pager()
