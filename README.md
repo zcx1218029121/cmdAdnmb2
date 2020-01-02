@@ -33,7 +33,10 @@ win的也可以直接 下载打包好的exe文件 在命令行里面运行
 ![avatar](https://s2.ax1x.com/2019/12/30/lMRkUx.png)
 ### 详情页
 ![avatar](https://s2.ax1x.com/2019/12/30/lM2REt.png)
-
+https://s2.ax1x.com/2020/01/02/lYFL8g.png
+### 回复需要饼干 
+ 打包的exe 读取文件配置的功能还没写不支持回复
+![avatar](https://s2.ax1x.com/2020/01/02/lYFL8g.png)
 ## 操作 
  ### n 下一页
  ### pb 返回上一页
