@@ -55,7 +55,7 @@ def post_data(resto, content, title="", name="", email=""):
 
 
 def get_category():
-    text = requests.get(headers=header, url=category_url).text
+    text = requests.get(headers=header, url=category_url, cookies=cookies).text
     return text
 
 

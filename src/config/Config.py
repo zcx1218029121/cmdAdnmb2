@@ -38,7 +38,7 @@ send_ok = "发送成功"
 no_cookies = "没有饼干"
 
 # 要有 饼干才能回复  可以把饼干二维码 复制出来用 https://cli.im/deqr 扫描并填写
-cookies = {"userhash": "%D7%94%1BH%F8%EB%B8%CE%8Dr%24s%F8%EAC%80%F1C%C3G%FD%A9%3F%12",
-           "memberUserspapapa": "yu%E3%15%D4%EE%E6%08%0B%C9%80%03%F7%C6%CE0%BD%1D%9B%8B5V%E2%8E%03%D2%E6%FEY%EB%B7eE%BB%D5%A0%82%F73z%18%B4%D8%14%5B%F1%C5%FACF%0E-%0EndB%1B%EB%5B%FE%B7%B0j%AB",
-           "PHPSESSID": "ejmudfdu2bctkboii1kfa5jkk2"}
+cookies = {"userhash": "",
+           "memberUserspapapa": "",
+           "PHPSESSID": ""}
 ip_exit = "exit"
