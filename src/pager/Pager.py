@@ -28,7 +28,7 @@ def is_number(s):
 class Pager(View, ABC):
     cache_size = 10
     # 默认 请求页数 1
-    # 缓存页面 默认为 3
+    # 缓存页面 默认为 10
     pager_queue = queue.Queue(cache_size)
 
     def __init__(self, template, string_id=4):

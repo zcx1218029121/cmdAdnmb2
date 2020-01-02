@@ -7,6 +7,8 @@ appid = "&appid=e31c86032f0d607c&__t=1571144068156"
 plate_url = "https://adnmb2.com/Api/showf?id=%s&page=%s"
 sting_info_url = "https://nmb.fastmirror.org/Api/thread?id=%s&page=%d"
 re_url = "https://adnmb.com/Home/Forum/doReplyThread.html"
+# 分类url
+category_url = "http://cover.acfunwiki.org/luwei.json?appid=e31c86032f0d607c&__t=1577944306659"
 
 
 def get_plate_info(id, pager):
@@ -48,3 +50,8 @@ def post_data(resto, content, title="", name="", email=""):
         return no_cookies
     elif "冷却" in text:
         return "冷却中"
+
+
+def get_category():
+    text = requests.get(headers=header, url=category_url).text
+    return text
