@@ -92,7 +92,7 @@ class Pager(View, ABC):
         :param text:
         :return:
         """
-        Route.instance.show_toast(post_data(self.id, text))
+        Route.instance.show_toast(post_string(self.id, text))
 
     def index_type(self, ip):
         Route.instance.push({"name": "info", "parm": self.data[int(ip)]["id"]})
