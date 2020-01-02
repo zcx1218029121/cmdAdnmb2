@@ -71,8 +71,4 @@ class App:
 
 
 if __name__ == '__main__':
-
-    a = InfoPager(InfoPagerTemplate()).pager_queue
-    b = InfoPager(InfoPagerTemplate()).pager_queue
-    print(a == b)
     App().start()
