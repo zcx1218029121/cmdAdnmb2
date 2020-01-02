@@ -1,5 +1,6 @@
 # coding=utf-8
 from src import Route
+from src.Stack import Stack
 from src.pager.View import *
 from abc import ABC
 import json
@@ -27,14 +28,14 @@ def is_number(s):
 
 class Pager(View, ABC):
     cache_size = 10
+
     # 默认 请求页数 1
     # 缓存页面 默认为 10
-    pager_queue = queue.Queue(cache_size)
 
     def __init__(self, template, string_id=4):
         super().__init__(template)
         self.id = string_id
-        self.pager_queue = queue.Queue(self.cache_size)
+        self.history_stack = Stack()
         self.pager = 1
 
     def on_destroy(self):
@@ -43,10 +44,10 @@ class Pager(View, ABC):
     def next_pager(self):
         self.pager = self.pager + 1
         # 缓存上一页的数据
-        if self.pager_queue.full():
-            # 缓存页数据出队
-            self.pager_queue.get()
-        self.pager_queue.put(self.data)
+        if self.history_stack.size() > self.cache_size:
+            # 缓存页数据出栈
+            self.history_stack.pop()
+        self.history_stack.push(self.data)
         self.data = self.get_data()
         # 重新打印当前内
 
@@ -54,8 +55,8 @@ class Pager(View, ABC):
         # 缓存队列
         self.pager = self.pager - 1
         # 如果前一页有缓存 不为空
-        if not self.pager_queue.empty():
-            self.data = self.pager_queue.get()
+        if not self.history_stack.size() == 0:
+            self.data = self.history_stack.pop()
         else:
             if self.pager < 2:
                 self.pager = 1

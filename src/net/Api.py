@@ -71,5 +71,9 @@ def post_string(fid, content, title="", name="", email=""):
     text = requests.post(headers=header, url=post_url, data=data,
                          cookies=cookies).text
 
-    return text
-
+    if "成功" in text:
+        return send_ok
+    elif "没有饼干" in text:
+        return no_cookies
+    elif "冷却" in text:
+        return "冷却中"

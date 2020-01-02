@@ -57,7 +57,7 @@ class App:
     def start(self):
         self.on_creat()
         # 默认加载时间线页面
-        self.add_pager(Pager(ListPagerTemplate(), string_id=4))
+        self.add_pager(Pager(ListPagerTemplate(), string_id=20))
         # main loop
         while self.run:
             self.show_pager()
