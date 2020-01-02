@@ -10,6 +10,8 @@ re_url = "https://adnmb.com/Home/Forum/doReplyThread.html"
 # 分类url
 category_url = "http://cover.acfunwiki.org/luwei.json?appid=e31c86032f0d607c&__t=1577944306659"
 
+post_url = "https://nmb.fastmirror.org/Home/Forum/doPostThread.html"
+
 
 def get_plate_info(id, pager):
     """
@@ -55,3 +57,19 @@ def post_data(resto, content, title="", name="", email=""):
 def get_category():
     text = requests.get(headers=header, url=category_url).text
     return text
+
+
+def post_string(fid, content, title="", name="", email=""):
+    data = {
+        "fid": fid,
+        "content": content,
+        "title": title,
+        "name": name,
+        "email": email,
+        "water": "true"
+    }
+    text = requests.post(headers=header, url=post_url, data=data,
+                         cookies=cookies).text
+
+    return text
+
