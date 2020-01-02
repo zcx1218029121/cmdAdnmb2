@@ -7,6 +7,7 @@ from src.net.Api import *
 import queue
 from src.config.Config import prefix_re, pg_down, pg_up
 
+
 def is_number(s):
     try:
         float(s)
@@ -27,13 +28,14 @@ def is_number(s):
 class Pager(View, ABC):
     cache_size = 10
     # 默认 请求页数 1
-    pager = 1
     # 缓存页面 默认为 3
     pager_queue = queue.Queue(cache_size)
 
     def __init__(self, template, string_id=4):
         super().__init__(template)
         self.id = string_id
+        self.pager_queue = queue.Queue(self.cache_size)
+        self.pager = 1
 
     def on_destroy(self):
         self.data = None
@@ -58,7 +60,6 @@ class Pager(View, ABC):
             if self.pager < 2:
                 self.pager = 1
             self.data = self.get_data()
-        self.print_pager()
 
     def get_data(self):
         self.show_loading()

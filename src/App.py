@@ -1,6 +1,7 @@
 # coding=utf-8
 import sys
-sys.path.append('/home/zcx/IdeaProjects/cmdAdnmb2')
+
+sys.path.append('F:\cmdAdnmb2')
 from src import Route
 from src.Stack import Stack
 from src.config.Config import welcome, bye, pg_down, pg_up, back
@@ -70,4 +71,8 @@ class App:
 
 
 if __name__ == '__main__':
+
+    a = InfoPager(InfoPagerTemplate()).pager_queue
+    b = InfoPager(InfoPagerTemplate()).pager_queue
+    print(a == b)
     App().start()
