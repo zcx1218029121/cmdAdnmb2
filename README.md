@@ -29,6 +29,7 @@ win的也可以直接 下载打包好的exe文件 在命令行里面运行
 
 ###  选择板块
 ![avatar](https://s2.ax1x.com/2020/01/02/ltRtUS.png)
+时间线板块需要 登录
 
 ### 板块页
 ![avatar](https://s2.ax1x.com/2019/12/30/lMRkUx.png)
