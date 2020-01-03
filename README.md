@@ -7,11 +7,23 @@
 ## 需要安装的库和环境
 ### python 3.0
 
+
+
+
+
+
+
+
+
+
 ### requests 库
  ```python
     pip install requests
 ```
 ## 如何使用
+
+## win环境下可以直接[下载]("https://github.com/zcx1218029121/cmdAdnmb2/releases").
+https://github.com/zcx1218029121/cmdAdnmb2/releases
 ### 添加模块到python环境
 修改src/App.py
 
