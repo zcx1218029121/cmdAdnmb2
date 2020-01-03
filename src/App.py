@@ -1,10 +1,10 @@
 # coding=utf-8
 import sys
-import os
-
-from src.config import Config
 
 sys.path.append('F:\cmdAdnmb2')
+import os
+from src.config import Config
+
 import json
 from src.pager.CategoryPager import CategoryPager
 from src.template.CategoryPagerTemplate import CategoryPagerTemplate
