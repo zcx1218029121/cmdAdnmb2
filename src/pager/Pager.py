@@ -8,7 +8,6 @@ import json
 from src.net.Api import *
 
 
-
 def is_number(s):
     try:
         float(s)
@@ -32,11 +31,11 @@ class Pager(View, ABC):
     # 默认 请求页数 1
     # 缓存页面 默认为 10
 
-    def __init__(self, template, string_id=4):
+    def __init__(self, template):
         super().__init__(template)
-        self.id = string_id
         self.history_stack = Stack()
         self.pager = 1
+        self.id =None
 
     def on_destroy(self):
         self.data = None
@@ -64,7 +63,8 @@ class Pager(View, ABC):
 
     def get_data(self):
         self.show_loading()
-        self.id = Route.instance.cur_intent["parm"]
+        if not self.id:
+            self.id = Route.instance.cur_intent["parm"]
         return json.loads(get_plate_info(self.id, self.pager))
 
     def show_loading(self):
