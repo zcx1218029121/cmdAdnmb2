@@ -1,7 +1,7 @@
 # coding=utf-8
 import requests
 
-from src.config.Config import header, cookies, send_ok, no_cookies
+from src.config import Config
 
 appid = "&appid=e31c86032f0d607c&__t=1571144068156"
 plate_url = "https://adnmb2.com/Api/showf?id=%s&page=%s"
@@ -20,7 +20,7 @@ def get_plate_info(id, pager):
     :return:
     """
     url = plate_url % (id, pager) + appid
-    text = requests.get(headers=header, url=url).text
+    text = requests.get(headers=Config.instance.header, url=url).text
     return text
 
 
@@ -31,7 +31,7 @@ def get_string_info_url(id, pager):
     :return:
     """
     url = sting_info_url % (id, pager) + appid
-    text = requests.get(headers=header, url=url).text
+    text = requests.get(headers=Config.instance.header, url=url).text
     return text
 
 
@@ -44,18 +44,18 @@ def post_data(resto, content, title="", name="", email=""):
         "email": email,
         "water": "true"
     }
-    text = requests.post(headers=header, url=re_url, data=data,
-                         cookies=cookies).text
+    text = requests.post(headers=Config.instance.header, url=re_url, data=data,
+                         cookies=Config.instance.cookies).text
     if "回复成功" in text:
-        return send_ok
+        return Config.instance.send_ok
     elif "没有饼干" in text:
-        return no_cookies
+        return Config.instance.no_cookies
     elif "冷却" in text:
         return "冷却中"
 
 
 def get_category():
-    text = requests.get(headers=header, url=category_url, cookies=cookies).text
+    text = requests.get(headers=Config.instance.header, url=category_url, cookies=Config.instance.cookies).text
     return text
 
 
@@ -68,12 +68,12 @@ def post_string(fid, content, title="", name="", email=""):
         "email": email,
         "water": "true"
     }
-    text = requests.post(headers=header, url=post_url, data=data,
-                         cookies=cookies).text
+    text = requests.post(headers=Config.instance.header, url=post_url, data=data,
+                         cookies=Config.instance.cookies).text
 
     if "成功" in text:
-        return send_ok
+        return Config.instance.send_ok
     elif "没有饼干" in text:
-        return no_cookies
+        return Config.instance.no_cookies
     elif "冷却" in text:
         return "冷却中"

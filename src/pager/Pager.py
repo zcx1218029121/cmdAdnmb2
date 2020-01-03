@@ -1,12 +1,12 @@
 # coding=utf-8
 from src import Route
 from src.Stack import Stack
+from src.config import Config
 from src.pager.View import *
 from abc import ABC
 import json
 from src.net.Api import *
-import queue
-from src.config.Config import prefix_re, pg_down, pg_up
+
 
 
 def is_number(s):
@@ -76,14 +76,14 @@ class Pager(View, ABC):
         :param ip: 输入
         :return: 是否传递输入给 APP
         """
-        if ip == pg_down:
+        if ip == Config.instance.pg_down:
             self.next_pager()
             return True
-        if ip == pg_up:
+        if ip == Config.instance.pg_up:
             self.up_pager()
             return True
-        if ip.startswith(prefix_re):
-            self.do_reply(ip[len(prefix_re):])
+        if ip.startswith(Config.instance.prefix_re):
+            self.do_reply(ip[len(Config.instance.prefix_re):])
             return True
         if is_number(ip):
             return self.index_type(ip)

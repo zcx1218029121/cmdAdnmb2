@@ -2,13 +2,14 @@
 import sys
 import os
 
+from src.config import Config
+
 sys.path.append('F:\cmdAdnmb2')
 import json
 from src.pager.CategoryPager import CategoryPager
 from src.template.CategoryPagerTemplate import CategoryPagerTemplate
 from src import Route
 from src.Stack import Stack
-from src.config.Config import welcome, bye, pg_down, pg_up, back
 from src.pager.InfoPager import InfoPager
 from src.pager.Pager import *
 from src.template.InfoPagerTemplate import InfoPagerTemplate
@@ -25,9 +26,10 @@ class App:
         应用启动
         :return:
         """
-        OutPutUtil.singleton.log(welcome)
+        OutPutUtil.singleton.log(Config.instance.welcome)
 
         # 绑定路由
+        self.read_config()
         Route.instance.bind_app(self)
 
     def add_pager(self, pager):
@@ -47,7 +49,7 @@ class App:
 
     def on_exit(self):
         self.pager_task.clear()
-        OutPutUtil.singleton.log(bye)
+        OutPutUtil.singleton.log(Config.instance.bye)
         # 结束循环
         self.run = False
 
@@ -69,26 +71,27 @@ class App:
             ip = input()
             if self.pager_task.peek().handler_input(ip):
                 continue
-            if ip == back:
+            if ip == Config.instance.back:
                 self.back()
             if ip == "exit":
                 self.on_exit()
 
     def read_config(self):
-        if not os.path.exists("./config.json"):
-            userhash = input("userhash:")
-            memberUserspapapa = input("memberUserspapapa:")
-            PHPSESSID = input("PHPSESSID:")
-            cookie_json = {"userhash": userhash, "memberUserspapapa": memberUserspapapa, "PHPSESSID": PHPSESSID}
-            with open("./config.json", "w") as f:
-                f.write(json.dumps(cookie_json))
-        else:
+        # if not os.path.exists("./config.json"):
+        #     userhash = input("userhash:")
+        #     memberUserspapapa = input("memberUserspapapa:")
+        #     PHPSESSID = input("PHPSESSID:")
+        #     cookie_json = {"userhash": userhash, "memberUserspapapa": memberUserspapapa, "PHPSESSID": PHPSESSID}
+        #     with open("./config.json", "w") as f:
+        #         f.write(json.dumps(cookie_json))
+        if os.path.exists("./config.json"):
             with open("./config.json", 'r') as f:
-                cookies_config = json.loads(f.read())
-                cookies["userhash"] = cookies_config["userhash"]
-                cookies["memberUserspapapa"] = cookies_config["memberUserspapapa"]
-                cookies["PHPSESSID"] = cookies_config["PHPSESSID"]
+                config_json = json.loads(f.read())
+                Config.instance.cookies = config_json["cookies"]
+                OutPutUtil.singleton.log("已经登录")
+        else:
+            OutPutUtil.singleton.log("未登录")
 
 
 if __name__ == '__main__':
-    App().read_config()
+    App().start()
