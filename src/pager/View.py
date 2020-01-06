@@ -46,7 +46,7 @@ class View(metaclass=ABCMeta):
         :return:
         """
         self.init_data()
-        self.print_pager()
+
 
     # 销毁回调
     def on_destroy(self):

@@ -3,6 +3,7 @@ import sys
 
 sys.path.append('F:\cmdAdnmb2')
 import os
+from src.dao.DbHelper import *
 from src.config import Config
 import json
 from src.pager.CategoryPager import CategoryPager
@@ -25,6 +26,7 @@ class App:
         应用启动
         :return:
         """
+
         OutPutUtil.singleton.log(Config.instance.welcome)
 
         # 绑定路由
@@ -68,6 +70,8 @@ class App:
         while self.run:
             self.show_pager()
             ip = input()
+            if ip == "myString":
+                Route.instance.push({"name": "myString"})
             if self.pager_task.peek().handler_input(ip):
                 continue
             if ip == Config.instance.back:

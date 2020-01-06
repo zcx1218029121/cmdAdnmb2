@@ -1,5 +1,6 @@
 # coding=utf-8
 import json
+from src.dao.DbHelper import *
 from src import Route
 from src.net.Api import *
 from src.pager.Pager import Pager
@@ -19,3 +20,9 @@ class InfoPager(Pager):
 
     def on_creat(self):
         self.id = Route.instance.cur_intent["parm"]
+
+    def handler_input(self, ip):
+        super().handler_input(ip)
+        if ip == "cs":
+            add_string(userid=self.data["userid"], img=self.data["img"], ext=self.data["ext"], content=self.data
+            ["content"],sid=self.data["id"])

@@ -1,5 +1,6 @@
 # coding=utf-8
 from src.pager.InfoPager import InfoPager
+from src.pager.MyStringPager import MyStringPager
 from src.pager.Pager import Pager
 from src.pager.Toast import Toast
 from src.template.InfoPagerTemplate import InfoPagerTemplate
@@ -10,7 +11,8 @@ from src.template.ToastTemplate import ToastTemplate
 class Route:
     # 路由列表
     route_list = {"info": {"pager": InfoPager, "template": InfoPagerTemplate},
-                  "main": {"pager": Pager, "template": ListPagerTemplate}
+                  "main": {"pager": Pager, "template": ListPagerTemplate},
+                  "myString": {"pager": MyStringPager, "template":ListPagerTemplate}
                   }
     cur_intent = None
     app = None

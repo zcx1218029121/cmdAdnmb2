@@ -63,7 +63,6 @@ class Pager(View, ABC):
     def get_data(self):
         self.show_loading()
 
-
         return json.loads(get_plate_info(self.id, self.pager))
 
     def show_loading(self):
@@ -83,6 +82,9 @@ class Pager(View, ABC):
             return True
         if ip.startswith(Config.instance.prefix_re):
             self.do_reply(ip[len(Config.instance.prefix_re):])
+            return True
+        if ip == Config.instance.pg_re:
+            self.refresh()
             return True
         if is_number(ip):
             return self.index_type(ip)
