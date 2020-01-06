@@ -14,6 +14,15 @@ class View(metaclass=ABCMeta):
 
     def __init__(self, template):
         self.template = template
+        self.on_creat()
+
+    @abstractmethod
+    def on_creat(self):
+        """
+        创建回调
+        :return:
+        """
+        pass
 
     def init_data(self):
         """
@@ -90,4 +99,9 @@ class View(metaclass=ABCMeta):
         OutPutUtil.singleton.log(self.template.generate_content(self.data))
 
     def print_text(self, text):
+        """
+        打印 text
+        :param text:
+        :return:
+        """
         OutPutUtil.singleton.log(text)

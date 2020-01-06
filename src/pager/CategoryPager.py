@@ -1,8 +1,7 @@
-from src import Route
-from src.pager.Pager import Pager, get_category
 import json
 
-from src.template.CategoryPagerTemplate import CategoryPagerTemplate
+from src import Route
+from src.pager.Pager import Pager, get_category
 
 
 class CategoryPager(Pager):
@@ -14,4 +13,7 @@ class CategoryPager(Pager):
         Route.instance.push({"name": "main", "parm": self.data["forum"][int(ip)]["id"]})
 
     def do_reply(self, text):
+        pass
+
+    def on_creat(self):
         pass

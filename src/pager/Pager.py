@@ -35,7 +35,6 @@ class Pager(View, ABC):
         super().__init__(template)
         self.history_stack = Stack()
         self.pager = 1
-        self.id =None
 
     def on_destroy(self):
         self.data = None
@@ -63,8 +62,8 @@ class Pager(View, ABC):
 
     def get_data(self):
         self.show_loading()
-        if not self.id:
-            self.id = Route.instance.cur_intent["parm"]
+
+
         return json.loads(get_plate_info(self.id, self.pager))
 
     def show_loading(self):
@@ -99,3 +98,6 @@ class Pager(View, ABC):
     def index_type(self, ip):
         Route.instance.push({"name": "info", "parm": self.data[int(ip)]["id"]})
         return True
+
+    def on_creat(self):
+        self.id = Route.instance.cur_intent["parm"]

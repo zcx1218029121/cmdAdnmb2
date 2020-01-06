@@ -26,3 +26,6 @@ class Toast(View, ABC):
         super().on_show()
         # show 调用后吐司 立刻弹出页面堆栈
         self.app.pager_task.pop()
+
+    def on_creat(self):
+        pass
