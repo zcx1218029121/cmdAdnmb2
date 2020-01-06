@@ -97,4 +97,6 @@ class App:
 
 
 if __name__ == '__main__':
+    if not os.path.exists("./collect.db"):
+        creat_table()
     App().start()
