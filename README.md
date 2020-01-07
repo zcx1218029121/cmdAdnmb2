@@ -4,14 +4,14 @@
 非常简陋的代码 
 
 抓包了安卓绿岛
-## 需要安装的库和环境
+## 👜需要安装的库和环境
 ### python 3.0
 Python 3.0 及以上
 ### requests 库
  ```python
     pip install requests
 ```
-## 如何使用
+## 🎮如何使用
 
 ##$ 0. win环境下可以直接
 [下载]("https://github.com/zcx1218029121/cmdAdnmb2/releases").
@@ -60,7 +60,7 @@ python3 App.py
 ### 回复 re:回复的内容 
     （需要在src/config/Config 填写cookies）
     
-### 辣眼睛警告
+### 🌶️辣眼睛警告
     1. 用Javaer的思维方式写的Python.简单的功能有点过度设计
     2. 代码水平捉急 辣眼睛请见谅. 
 ### todo 
