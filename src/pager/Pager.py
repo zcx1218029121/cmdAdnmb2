@@ -1,7 +1,6 @@
 # coding=utf-8
-from src import Route
+from src.dao import Route
 from src.Stack import Stack
-from src.config import Config
 from src.pager.View import *
 from abc import ABC
 import json

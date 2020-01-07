@@ -1,7 +1,7 @@
 # coding=utf-8
 import json
 from src.dao.DbHelper import *
-from src import Route
+from src.dao import Route
 from src.net.Api import *
 from src.pager.Pager import Pager
 

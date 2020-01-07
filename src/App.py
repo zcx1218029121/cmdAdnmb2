@@ -4,16 +4,9 @@ import sys
 sys.path.append('F:\cmdAdnmb2')
 import os
 from src.dao.DbHelper import *
-from src.config import Config
-import json
 from src.pager.CategoryPager import CategoryPager
 from src.template.CategoryPagerTemplate import CategoryPagerTemplate
-from src import Route
-from src.Stack import Stack
-from src.pager.InfoPager import InfoPager
 from src.pager.Pager import *
-from src.template.InfoPagerTemplate import InfoPagerTemplate
-from src.template.ListPagerTemplate import *
 
 
 class App:
@@ -62,6 +55,9 @@ class App:
         else:
             self.on_exit()
 
+    def go_to(self, string_no):
+        Route.instance.push({"name": "info", "parm": string_no[3:]})
+
     def start(self):
         self.on_creat()
         # 默认加载时间线页面
@@ -78,6 +74,8 @@ class App:
                 self.back()
             if ip == "exit":
                 self.on_exit()
+            if ip.startswith("go:"):
+                self.go_to(ip)
 
     def read_config(self):
         # if not os.path.exists("./config.json"):

@@ -1,4 +1,4 @@
-from src import Route
+from src.dao import Route
 from src.pager.Pager import Pager
 from src.dao.DbHelper import *
 
