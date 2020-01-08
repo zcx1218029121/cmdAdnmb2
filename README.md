@@ -13,7 +13,7 @@ Python 3.0 及以上
 ```
 ## 🎮如何使用
 
-### 0. win环境
+### 0. win和乌班图环境
 可以直接[下载]("https://github.com/zcx1218029121/cmdAdnmb2/releases")
 https://github.com/zcx1218029121/cmdAdnmb2/releases
 ### 1. 添加模块到python环境
