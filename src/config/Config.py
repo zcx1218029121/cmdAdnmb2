@@ -39,9 +39,7 @@ class Config:
     no_cookies = "没有饼干"
 
     # 要有 饼干才能回复  可以把饼干二维码 复制出来用 https://cli.im/deqr 扫描并填写
-    cookies = {"userhash": "",
-               "memberUserspapapa": "",
-               "PHPSESSID": ""}
+    cookies = {"userhash": ""}
     ip_exit = "exit"
 
 
